@@ -163,9 +163,33 @@ function removeFromCart(productId) {
 	localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
 }
 
+// Function that uses fetch to get data from the API
+function getData() {
+    fetch('https://onlineprojectsgit.github.io/API/WDEndpoint.json')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Request failed');
+            }
+        })
+        .then(data => {
+            console.log(data);
+            return data;
+        })
+        .catch(error => {
+            console.error(error.message);
+        });
+}
+
+// Call getData function to fetch and log the data
+getData();
+
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
 	renderProducts();
 	updateCart();
 	updateCartCount();
+	getData();
 });
+
