@@ -174,16 +174,31 @@ function getData() {
 			}
 		})
 		.then((data) => {
-			console.log(data);
-			return data;
+			if (data && data.info) {
+				displayInfo(data.info);
+			} else {
+				throw new Error('Info property not found in the response');
+			}
 		})
 		.catch((error) => {
 			console.error(error.message);
 		});
 }
 
-// Call getData function to fetch and log the data
-getData();
+function displayInfo(info) {
+	const footerInfo = document.getElementById('footer-info');
+	footerInfo.innerHTML = `
+        <p><strong>ID:</strong> ${info.id}</p>
+        <p><strong>Cohort:</strong> ${info.cohort}</p>
+        <p><strong>Name:</strong> ${info.Name}</p>
+        <p><strong>Start:</strong> ${info.Start}</p>
+        <p><strong>End:</strong> ${info.End}</p>
+        <p><strong>Instructor Name:</strong> ${info.instructor.name}</p>
+        <p><strong>Instructor Position:</strong> ${info.instructor.position}</p>
+        <p><strong>Instructor Cohorts:</strong> ${info.instructor.cohorts}</p>
+        <p><strong>Students:</strong> ${info.students.join(', ')}</p>
+    `;
+}
 
 // Initialize the page
 document.addEventListener('DOMContentLoaded', () => {
@@ -191,4 +206,5 @@ document.addEventListener('DOMContentLoaded', () => {
 	updateCart();
 	updateCartCount();
 	getData();
+	displayInfo(info);
 });
