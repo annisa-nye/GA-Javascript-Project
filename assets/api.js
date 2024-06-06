@@ -29,22 +29,4 @@ function getData(url) {
 
 
 
-  function displayLocalDateTime() {
-    const dateTimeDiv = document.getElementById('localDateTime');
-    const now = new Date();
-    
-    // Format date and time as per local settings
-    const options = {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-        hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short'
-    };
-    const formattedDateTime = now.toLocaleDateString('en-US', options) + ' ' + now.toLocaleTimeString('en-US', options);
-    
-    dateTimeDiv.textContent = formattedDateTime;
-}
-
-// Initial call to display the date and time
-displayLocalDateTime();
-
-// Update the date and time every second
-setInterval(displayLocalDateTime, 1000);
+ 
