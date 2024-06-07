@@ -34,6 +34,29 @@ header {
 	height: 100px;
 }
 
+/* Date and time styles */
+.datetime {
+	font-size: 1em;
+	background-color: rgba(255, 255, 255, 0.8);
+	padding: 5px 10px;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	border: 2px solid #5356ff;
+	color: #5356ff;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 70px;
+	align-self: center;
+}
+
+.datetime .date,
+.datetime .time {
+	display: flex;
+	gap: 5px;
+}
+
 .nav-box {
 	width: 80%;
 	display: flex;
